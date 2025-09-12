@@ -1,20 +1,11 @@
-from . import views
 from django.urls import path
-from .views import list_books_view, LibraryDetailView  # Explicitly import both views
-from .views import (
-    list_books_view,
-    LibraryDetailView,
-    register_view,
-
-)
-
+from . import views
 
 urlpatterns = [
-    path("login/", LoginView.as_view(template_name="relationship_app/login.html"), name="login"),
-    path("logout/", LogoutView.as_view(template_name="relationship_app/logout.html"), name="logout"),
-    
-    # Function-based registration view
     path("register/", views.register_view, name="register"),
+    path("login/", views.login_view, name="login"),
+    path("logout/", views.logout_view, name="logout"),
+]
     
     # Other existing views
     path("books/", list_books_view, name="list_books"),
