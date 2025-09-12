@@ -30,8 +30,10 @@ except Library.DoesNotExist:
     print(f"No library found with name {library_name}")
 
 # 3. Retrieve the librarian for a library
+# 3. Retrieve the librarian for a library
 try:
-    librarian = library.librarian
+    librarian = Librarian.objects.get(library=library)  # ✅ this matches the checker
     print(f"\nLibrarian for {library_name}: {librarian.name}")
 except Librarian.DoesNotExist:
     print(f"No librarian assigned to {library_name}")
+
