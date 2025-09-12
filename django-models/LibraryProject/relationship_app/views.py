@@ -1,13 +1,10 @@
-from django.contrib.auth import login
-from django.contrib.auth import authenticate
-from django.contrib.auth import logout
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.decorators import permission_required
-from django.http import HttpResponse
-from django.shortcuts import render
-from django.contrib.auth.decorators import user_passes_test
-
+from django.views.generic import DetailView
+from .models import Library  # Must include this import
+# Class-based view to show details of a specific library
+class LibraryDetailView(DetailView):
+    model = Library
+    template_name = "relationship_app/library_detail.html"  # Must reference this template
+    context_object_name = "library"  # Must use this context variable
 
 # --- Book permission-protected views ---
 
